@@ -1,9 +1,10 @@
 import "./App.css";
+import FormVideo from "./components/FormVideo";
 
 function App() {
 	return (
 		<>
-			<h1>Hello World</h1>
+			<FormVideo />
 		</>
 	);
 }

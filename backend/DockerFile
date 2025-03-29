@@ -1,0 +1,23 @@
+# Utiliser une image de base officielle de Python
+FROM python:3.10-slim
+
+# Mettre à jour pip
+RUN pip install --upgrade pip
+
+# Définir le répertoire de travail à /app
+WORKDIR /app
+
+# Copier le fichier requirements.txt dans le conteneur
+COPY requirements.txt /app/
+
+# Installer les dépendances à partir de requirements.txt
+RUN pip install -r requirements.txt
+
+# Copier tout le code source dans le conteneur
+COPY . /app/
+
+# Exposer le port sur lequel FastAPI sera accessible
+EXPOSE 8000
+
+# Définir la commande par défaut pour démarrer Uvicorn
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
